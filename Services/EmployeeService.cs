@@ -200,16 +200,30 @@ namespace PolicyStreetBackEnd.Services
         }
 
         // DELETE
-        public void Delete(int id)
+        public ServiceResult<string> Delete(int id)
         {
-            var data = _employeeDAO.GetById(id);
+            var result = new ServiceResult<string>();
 
-            if (data == null)
+            try
             {
-                throw new KeyNotFoundException("Employee not found");
-            }
+                var data = _employeeDAO.GetById(id);
 
-            _employeeDAO.Delete(id);
+                if (data == null)
+                {
+                    throw new KeyNotFoundException("Employee not found");
+                }
+
+                _employeeDAO.Delete(id);
+
+                result.SuccessResult("Success", "Delete employee success");
+            }
+            catch (Exception e)
+            {
+                result.ErrorResult("Delete employee failed");
+            }
+            
+
+            return result;
         }
     }
 }

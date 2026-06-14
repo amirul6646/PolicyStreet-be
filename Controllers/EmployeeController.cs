@@ -97,12 +97,12 @@ namespace PolicyStreetBackEnd.Controllers
         {
             try
             {
-                _employeeService.Delete(id);
-                return Ok(new { message = "Deleted successfully" });
+                var result = _employeeService.Delete(id);
+                return Ok(result);
             }
             catch (KeyNotFoundException ex)
             {
-               return NotFound(new { message = ex.Message });
+               return BadRequest(new { message = "delete employee fail" });
             }
         }
 

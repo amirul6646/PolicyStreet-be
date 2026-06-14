@@ -13,7 +13,7 @@ namespace PolicyStreetBackEnd.Data.Interface
 
         ServiceResult<bool> Update(Employee employee);
 
-        void Delete(int id);
+        ServiceResult<string> Delete(int id);
 
     }
 }
