@@ -54,6 +54,7 @@ namespace PolicyStreetBackEnd.Services
                             }
                         );
 
+
                 result.SuccessResult(data.ToList(), "Success");
 
             }
@@ -165,7 +166,7 @@ namespace PolicyStreetBackEnd.Services
 
                 if (exists)
                 {
-                    result.ErrorResult("Employee code already exists");
+                    result.ErrorResult("Employer code is already in use by another employee.");
                     return result;
                 }
 
@@ -225,5 +226,6 @@ namespace PolicyStreetBackEnd.Services
 
             return result;
         }
+
     }
 }
